@@ -36,7 +36,8 @@ RUN sudo chown -R coder:coder /home/coder/.local
 
 # Port
 ENV PORT=8080
-
+# 它会从 Fly.io 的 Secrets 中获取值
+ENV PASSWORD=$PASSWORD
 # Use our custom entrypoint script first
 COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]

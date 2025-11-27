@@ -37,7 +37,12 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # Port
 ENV PORT=8080
 # 它会从 Fly.io 的 Secrets 中获取值
+# --- 添加这一行来设置密码 ---
 ENV PASSWORD=$PASSWORD
+# --- 添加这一行来设置代理域名 ---
+ENV PROXY_DOMAIN=vscode.veilchow.space
+
+
 # Use our custom entrypoint script first
 COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
